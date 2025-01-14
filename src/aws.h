@@ -46,6 +46,7 @@ struct connection {
     /* file to be sent */
 	int fd;
 	char filename[BUFSIZ];
+	int async_done;
 
     /* asynchronous notification */
 	int eventfd;
@@ -64,7 +65,7 @@ struct connection {
 	char send_buffer[BUFSIZ];
 	size_t send_len;
 	size_t send_pos;
-	size_t file_pos;
+	off_t file_pos;
 	size_t async_read_len;
 
 	/* HTTP request path */
