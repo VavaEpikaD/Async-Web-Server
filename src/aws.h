@@ -46,7 +46,6 @@ struct connection {
     /* file to be sent */
 	int fd;
 	char filename[BUFSIZ];
-	int async_done;
 
     /* asynchronous notification */
 	int eventfd;
@@ -76,6 +75,8 @@ struct connection {
 
 	/* HTTP_REQUEST parser */
 	http_parser request_parser;
+
+	int sending;
 };
 
 void handle_client(uint32_t event, struct connection *conn);
